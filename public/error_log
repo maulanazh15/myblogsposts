@@ -1,0 +1,1 @@
+[14-Nov-2022 13:09:28 Asia/Jakarta] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 8.0.25. in /home/maturcod/myblogposts.maturcode.com/vendor/composer/platform_check.php on line 24
