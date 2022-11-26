@@ -37,7 +37,7 @@ class PostsChart
         return $this->chart->lineChart()
             ->setTitle('Jumlah posts di bulan November.')
             ->setSubtitle('Per Tanggal.')
-            ->addData('Tanggal', $sum_post)
+            ->addData('Jumlah Post', $sum_post)
             ->setXAxis($axis);
     }
 }
