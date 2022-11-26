@@ -10,8 +10,9 @@ use App\Http\Controllers\DocsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Charts\PostsChart;
 use App\Models\Comment;
-
+use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,9 +77,10 @@ Route::post('/register',[RegisterController::class, 'store']);
 
 
 
-Route::get('/dashboard', function (){
+Route::get('/dashboard', function (PostsChart $chart){
     return view('dashboard.index',[
-        'title' => 'Dashboard'
+        'title' => 'Dashboard',
+        'chart' => $chart->build()
     ]);
 })->middleware('auth');
 

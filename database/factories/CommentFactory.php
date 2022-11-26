@@ -16,15 +16,16 @@ class CommentFactory extends Factory
      */
     public function definition()
     {
-        $post_id = mt_rand(1, 30);
-        $user_id = mt_rand(1, 5);
+        $post_id = mt_rand(1, 100);
+        $user_id = mt_rand(1, 30);
         $comment_id = $post_id . $user_id;
         $comment = $this->faker->sentence(mt_rand(2, 5));
         return [
             'post_id' => $post_id,
             'user_id' => $user_id,
             'comment_id' => $comment_id,
-            'comment' => $comment
+            'comment' => $comment,
+            'created_at' => $this->faker->dateTimeBetween('-4 week','+4 week')
         ];
     }
 }

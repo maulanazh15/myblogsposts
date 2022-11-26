@@ -26,8 +26,10 @@ class PostFactory extends Factory
             'excerpt' => $excerpt,
             // 'body' => $this->faker->paragraphs(mt_rand(10,25)),
             'body' => $body,
-            'user_id' => mt_rand(1,6),
-            'category_id' => mt_rand(1,3)
+            'user_id' => mt_rand(1,30),
+            'category_id' => mt_rand(1,3),
+            'created_at' => $this->faker->dateTimeBetween('-4 week','+4 week'),
+            'published_at' => $this->faker->dateTimeBetween('-4 week','+4 week')
         ];
     }
 }
