@@ -11,6 +11,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Charts\PostsChart;
+use App\Http\Controllers\DashboardIndexController;
 use App\Models\Comment;
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 /*
@@ -77,12 +78,7 @@ Route::post('/register',[RegisterController::class, 'store']);
 
 
 
-Route::get('/dashboard', function (PostsChart $chart){
-    return view('dashboard.index',[
-        'title' => 'Dashboard',
-        'chart' => $chart->build()
-    ]);
-})->middleware('auth');
+Route::get('/dashboard', [DashboardIndexController::class, 'index'])->middleware('auth');
 
 Route::post('/dashboard/profile/update', [UserController::class, 'update'])->middleware('auth');
 Route::post('/dashboard/profile/img', [UserController::class, 'store'])->middleware('auth');

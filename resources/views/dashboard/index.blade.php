@@ -6,9 +6,21 @@
     </div>
     <div class="container px-4 mx-auto">
         <div class="p-6 m-20 bg-white rounded shadow">
-            {!! $chart->container() !!}
+            {!! $postsChart->container() !!}
         </div>
     </div>
-    <script src="{{ $chart->cdn() }}"></script>
-    {{ $chart->script() }}
+    <div class="container px-4 mx-auto mt-3">
+        <div class="p-6 m-20 bg-white rounded shadow">
+            {!! $categoryChart->container() !!}
+        </div>
+    </div>
+
+    <div class="hr mt-4">
+
+    </div>
+    
+    <script src="{{ $postsChart->cdn() }}"></script>
+    {{ $postsChart->script() }}
+    <script src="{{ $categoryChart->cdn() }}"></script>
+    {{ $categoryChart->script() }}
 @endsection

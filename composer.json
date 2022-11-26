@@ -15,7 +15,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "laraveldaily/laravel-charts": "^0.1.29"
+        "laraveldaily/laravel-charts": "^0.1.29",
+        "nesbot/carbon": "^2.63"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
