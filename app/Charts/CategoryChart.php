@@ -22,12 +22,12 @@ class CategoryChart
         $category = Post::groupBy('category_id')->select('category_id', DB::raw('COUNT(*) AS total'))->orderBy('category_id','asc')->get()->toArray();
         $sum_category = [];
         for ($i=0; $i < count($category); $i++) { 
-            $sum_category[$i] = $category[$i]['total'];
+            $sum_category[$i] = (int) $category[$i]['total'];
         }
         $category_name = Category::all('name')->sortBy('id')->toArray();
         $name = [];
         for ($i=0; $i  < count($category_name) ; $i++) { 
-            $name[$i] = $category_name[$i]['name'];
+            $name[$i] = $category_name[$i]['name']
         }
         // dd($category_name);
         return $this->chart->pieChart()
