@@ -37,6 +37,7 @@ class PostsChart
             ->setTitle('Jumlah posts di bulan '.now()->monthName)
             ->setSubtitle('Per Tanggal.')
             ->addData('Jumlah Post', $sum_post)
+            ->setGrid()
             ->setXAxis($axis);
     }
 }
