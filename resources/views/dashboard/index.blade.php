@@ -4,6 +4,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Welcome Back, {{ auth()->user()->name }}</h1>
     </div>
+    <h3 class="mx-auto text-center">Analisis Data Post Bulan {{ now()->monthName }}</h3>
     <div class="container px-4 mx-auto">
         <div class="p-6 m-20 bg-white rounded shadow">
             {!! $postsChart->container() !!}

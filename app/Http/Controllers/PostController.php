@@ -33,7 +33,8 @@ class PostController extends Controller
         return view('post',[
             "title" => "Single Post",
             "post" => $post,
-            "comments" => Comment::where('post_id', $post->id)->get()
+            "comments" => Comment::where('post_id', $post->id)->groupBy('comment_id')->get(),
+            "Comment" => Comment::class
         ]);
     }
 }

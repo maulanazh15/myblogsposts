@@ -57,6 +57,7 @@ Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::post('posts/{post:slug}/comment', [CommentController::class, 'store'])->middleware('auth');
+Route::post('posts/comment/{comment:comment_id}/reply', [CommentController::class, 'store'])->middleware('auth');
 Route::post('posts/comment/{comment:id}/update', [CommentController::class, 'update'])->middleware('auth');
 Route::post('posts/comment/{comment:id}/del', [CommentController::class, 'destroy'])->middleware('auth');
 
