@@ -17,12 +17,11 @@ class PostsChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-        $from = date('01-11-2022');
-        $to = date('20-12-2022');
-        $posts = Post::whereMonth('created_at','11')->groupBy('date')
-        ->orderBy('date', 'ASC')
+        $month = 11;
+        $posts = Post::whereMonth('created_at',$month)->groupBy('day')
+        ->orderBy('day', 'ASC')
         ->get(array(
-            DB::raw('Date(created_at) as date'),
+            DB::raw('DAY(created_at) as day'),
             DB::raw('COUNT(*) as "total"')
         ));
         // $created_at = Post::select('created_at')->distinct()->get()->toArray()->created_at;
@@ -32,12 +31,12 @@ class PostsChart
         }
         $axis = array();
         for ($i=0; $i < count($posts); $i++) { 
-            $axis[$i] = $posts[$i]->date;
+            $axis[$i] = $posts[$i]->day;
         }
         // dd($sum_post);
         return $this->chart->lineChart()
             ->setTitle('Jumlah posts di bulan November.')
-            ->setSubtitle('Per Hari.')
+            ->setSubtitle('Per Tanggal.')
             ->addData('Tanggal', $sum_post)
             ->setXAxis($axis);
     }
