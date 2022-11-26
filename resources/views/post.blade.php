@@ -112,35 +112,35 @@
 
                                                             </div>
                                                             @auth
-                                                            <form action="comment/{{ $comment->comment_id }}/reply"
-                                                                method="post" class="comment_sec_box"
-                                                                id="comment_reply{{ $comment->comment_id }}"
-                                                                style="display: none">
-                                                                @csrf
-                                                                <input type="hidden" name="comment_id"
-                                                                    value="{{ $comment->comment_id }}">
-                                                                <input type="hidden" name="user_id"
-                                                                    value="{{ auth()->user()->id }}">
-                                                                <input type="hidden" name="post_id"
-                                                                    value="{{ $post->id }}">
-                                                                <textarea name="comment" class="form-control" cols="30" rows="2">Balas Komentar</textarea>
-                                                                <input type="submit" class="btn btn-info mt-2"
-                                                                    name="reply_c" value="Kirim">
-                                                            </form>
+                                                                <form action="comment/{{ $comment->comment_id }}/reply"
+                                                                    method="post" class="comment_sec_box"
+                                                                    id="comment_reply{{ $comment->comment_id }}"
+                                                                    style="display: none">
+                                                                    @csrf
+                                                                    <input type="hidden" name="comment_id"
+                                                                        value="{{ $comment->comment_id }}">
+                                                                    <input type="hidden" name="user_id"
+                                                                        value="{{ auth()->user()->id }}">
+                                                                    <input type="hidden" name="post_id"
+                                                                        value="{{ $post->id }}">
+                                                                    <textarea name="comment" class="form-control" cols="30" rows="2">Balas Komentar</textarea>
+                                                                    <input type="submit" class="btn btn-info mt-2"
+                                                                        name="reply_c" value="Kirim">
+                                                                </form>
                                                             @endauth
-                                                            
+
                                                             @foreach ($Comment
             ::where('comment_id', $comment->comment_id)->get()->skip(1) as $section)
                                                                 <div class="d-flex flex-start mt-4">
                                                                     @if ($section->user->image)
-                                                                    <img class="rounded-circle shadow-1-strong me-3"
-                                                                        src="{{ asset('storage/' . $section->user->image) }}"
-                                                                        alt="avatar" width="65" height="65" />
-                                                                @else
-                                                                    <img class="rounded-circle shadow-1-strong me-3"
-                                                                        src="http://bootdey.com/img/Content/avatar/avatar1.png"
-                                                                        alt="avatar" width="65" height="65" />
-                                                                @endif
+                                                                        <img class="rounded-circle shadow-1-strong me-3"
+                                                                            src="{{ asset('storage/' . $section->user->image) }}"
+                                                                            alt="avatar" width="65" height="65" />
+                                                                    @else
+                                                                        <img class="rounded-circle shadow-1-strong me-3"
+                                                                            src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                                                                            alt="avatar" width="65" height="65" />
+                                                                    @endif
                                                                     <div class="flex-grow-1 flex-shrink-1">
                                                                         <div>
                                                                             <div
@@ -195,8 +195,11 @@
                                                         </div>
 
                                                     </div>
+                                                    
                                                 @endforeach
-
+                                                @if ($comments->count() == 0)
+                                                <p class="text-center">No comment has been made in this posts</p>
+                                                @endif
                                                 @auth
                                                     {{-- Comment Form --}}
                                                     <div class="d-flex flex-start mt-4">
