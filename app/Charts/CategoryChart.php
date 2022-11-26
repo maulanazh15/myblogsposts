@@ -19,7 +19,8 @@ class CategoryChart
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
         $month = now()->monthName;
-        $category = Post::groupBy('category_id')->select('category_id', DB::raw('COUNT(*) AS total'))->orderBy('category_id','asc')->get()->toArray();
+        $month_int = now()->month;
+        $category = Post::groupBy('category_id')->select('category_id', DB::raw('COUNT(*) AS total'))->whereMonth('created_at',$month_int)->orderBy('category_id','asc')->get()->toArray();
         $sum_category = [];
         for ($i=0; $i < count($category); $i++) { 
             $sum_category[$i] = (int) $category[$i]['total'];
