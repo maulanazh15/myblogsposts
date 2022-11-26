@@ -27,7 +27,7 @@ class CategoryChart
         $category_name = Category::all('name')->sortBy('id')->toArray();
         $name = [];
         for ($i=0; $i  < count($category_name) ; $i++) { 
-            $name[$i] = $category_name[$i]['name']
+            $name[$i] = $category_name[$i]['name'];
         }
         // dd($category_name);
         return $this->chart->pieChart()
