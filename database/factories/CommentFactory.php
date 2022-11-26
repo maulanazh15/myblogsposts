@@ -16,8 +16,8 @@ class CommentFactory extends Factory
      */
     public function definition()
     {
-        $post_id = mt_rand(1, 100);
-        $user_id = mt_rand(1, 30);
+        $post_id = mt_rand(1, 200);
+        $user_id = mt_rand(1, 50);
         $comment_id = $post_id . $user_id;
         $comment = $this->faker->sentence(mt_rand(2, 5));
         return [

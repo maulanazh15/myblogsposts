@@ -19,7 +19,6 @@ class PostsChart
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
         $month = now()->month;
-        $n_day = now()->daysInMonth;
         $posts = Post::whereMonth('created_at',$month)->groupBy('day')
         ->orderBy('day', 'ASC')
         ->get(array(

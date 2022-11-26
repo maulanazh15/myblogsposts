@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => 1
         ]);
 
-        User::factory(30)->create();
+        User::factory(49)->create();
 
         Category::create([
             'name' => 'Web Programming',
@@ -48,8 +48,8 @@ class DatabaseSeeder extends Seeder
             'slug' => 'computer'
         ]);
 
-        Post::factory(100)->create();
-        Comment::factory(150)->create();
+        Post::factory(200)->create();
+        Comment::factory(300)->create();
     }
 }
 
