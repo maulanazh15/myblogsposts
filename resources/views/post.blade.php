@@ -111,6 +111,7 @@
 
 
                                                             </div>
+                                                            @auth
                                                             <form action="comment/{{ $comment->comment_id }}/reply"
                                                                 method="post" class="comment_sec_box"
                                                                 id="comment_reply{{ $comment->comment_id }}"
@@ -126,6 +127,8 @@
                                                                 <input type="submit" class="btn btn-info mt-2"
                                                                     name="reply_c" value="Kirim">
                                                             </form>
+                                                            @endauth
+                                                            
                                                             @foreach ($Comment
             ::where('comment_id', $comment->comment_id)->get()->skip(1) as $section)
                                                                 <div class="d-flex flex-start mt-4">
