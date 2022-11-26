@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1cd4c444600944613314cf8d4d399d7ddd468f72',
+        'reference' => '29262471dc21717d9d568cdd5faf1c4735a2979a',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -394,6 +394,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'khill/lavacharts' => array(
+            'pretty_version' => '3.1.14',
+            'version' => '3.1.14.0',
+            'reference' => '58a2ee714a7029f7b2fb4bf8d474f3c2ec9005e1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../khill/lavacharts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
             'replaced' => array(
@@ -412,7 +421,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1cd4c444600944613314cf8d4d399d7ddd468f72',
+            'reference' => '29262471dc21717d9d568cdd5faf1c4735a2979a',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
