@@ -28,8 +28,8 @@ class PostFactory extends Factory
             'body' => $body,
             'user_id' => mt_rand(1,50),
             'category_id' => mt_rand(1,3),
-            'created_at' => $this->faker->dateTimeBetween('-4 week','+4 week'),
-            'published_at' => $this->faker->dateTimeBetween('-4 week','+4 week')
+            'created_at' => $this->faker->dateTimeBetween('-5 week','now'),
+            'published_at' => $this->faker->dateTimeBetween('-5 week','now')
         ];
     }
 }

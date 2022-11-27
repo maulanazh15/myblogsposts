@@ -22,13 +22,16 @@
 
         @if ($posts->count())
             <div class="card mb-3 text-center">
-              @if ($posts[0]->image)
-                            <img src="{{ asset('storage/' . $posts[0]->image) }}" class="img-fluid mt-3"
-                                alt="{{ $posts[0]->category->name }}">
-                        @else
-                <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}" class="card-img-top"
-                    alt="{{ $posts[0]->category->name }}">
-                    @endif
+                @if ($posts[0]->image)
+                    <img src="{{ asset('storage/' . $posts[0]->image) }}" class="img-fluid mt-3"
+                        alt="{{ $posts[0]->category->name }}">
+                @elseif ($posts[0]->category->image)
+                    <img src="{{ asset('storage/' . $posts[0]->category->image) }}" class="img-fluid"
+                        alt="{{ $posts[0]->category->name }}">
+                @else
+                    <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}" class="img-fluid"
+                        alt="{{ $posts[0]->category->name }}">
+                @endif
                 <div class="card-body">
                     <h3 class="card-title"><a class="text-decoration-none text-dark"
                             href="/posts/{{ $posts[0]->slug }}">{{ $posts[0]->title }}</a></h3>
@@ -59,18 +62,21 @@
                         @if ($post->image)
                             <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid mt-3"
                                 alt="{{ $post->category->name }}">
+                        @elseif ($post->category->image)
+                            <img src="{{ asset('storage/' . $post->category->image) }}" class="img-fluid"
+                                alt="{{ $post->category->name }}">
                         @else
-                            <img src="https://source.unsplash.com/500x400/?{{ $post->category->name }}"
-                                class="card-img-top" alt="{{ $post->category->name }}">
+                            <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" class="img-fluid"
+                                alt="{{ $post->category->name }}">
                         @endif
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $post->title }}</h5>
-                                <small class="text-muted">By. <a href="/posts?user={{ $post->user->username }}"
-                                        class="text-decoration-none"> {{ $post->user->name }} </a> Last updated
-                                    {{ $post->created_at->diffForHumans() }}</small>
-                                <p class="card-text">{{ $post->excerpt }}</p>
-                                <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read More..</a>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $post->title }}</h5>
+                            <small class="text-muted">By. <a href="/posts?user={{ $post->user->username }}"
+                                    class="text-decoration-none"> {{ $post->user->name }} </a> Last updated
+                                {{ $post->created_at->diffForHumans() }}</small>
+                            <p class="card-text">{{ $post->excerpt }}</p>
+                            <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read More..</a>
+                        </div>
                     </div>
                 </div>
             @endforeach

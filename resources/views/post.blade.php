@@ -29,9 +29,13 @@
                 @if ($post->image)
                     <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid mt-3"
                         alt="{{ $post->category->name }}">
-                @else
-                    <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" class="img-fluid"
+                @elseif ($post->category->image)
+                    <img src="{{ asset('storage/'. $post->category->image) }}" class="img-fluid"
                         alt="{{ $post->category->name }}">
+                @else 
+                <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" class="img-fluid"
+                alt="{{ $post->category->name }}">    
+                
                 @endif
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
@@ -130,7 +134,10 @@
                                                             @endauth
 
                                                             @foreach ($Comment
-            ::where('comment_id', $comment->comment_id)->get()->skip(1) as $section)
+            ::latest()->where('comment_id', $comment->comment_id)->get() as $section)
+                                                                @if($loop->last)
+                                                                    @break
+                                                                @endif
                                                                 <div class="d-flex flex-start mt-4">
                                                                     @if ($section->user->image)
                                                                         <img class="rounded-circle shadow-1-strong me-3"
@@ -244,7 +251,7 @@
                                                                                                 value="{{ $post->id }}">
                                                                                             <input type="hidden"
                                                                                                 name="comment_id"
-                                                                                                value="{{ auth()->user()->id . $post->id }}">
+                                                                                                value="{{ auth()->user()->id . $post->id . time() }}">
                                                                                             <input type="reset"
                                                                                                 class="btn btn-success"
                                                                                                 value="Batal">
