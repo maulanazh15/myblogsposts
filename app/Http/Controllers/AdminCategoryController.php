@@ -127,7 +127,7 @@ class AdminCategoryController extends Controller
     {
         $this->authorize('admin');
         if($category->image){Storage::delete($category->image);}
-        Comment::where('post_id', $category->posts->id)->delete();
+     
         Post::where('category_id', $category->id)->delete();
         Category::destroy($category->id);
         
