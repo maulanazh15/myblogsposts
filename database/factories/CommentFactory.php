@@ -25,7 +25,7 @@ class CommentFactory extends Factory
             'user_id' => $user_id,
             'comment_id' => $comment_id,
             'comment' => $comment,
-            'created_at' => $this->faker->dateTimeBetween('-5 week','now')
+            'created_at' => $this->faker->dateTimeBetween('now','+5 week')
         ];
     }
 }
